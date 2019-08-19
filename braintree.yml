@@ -1,0 +1,14 @@
+# Add your project name here
+name: custom-actions-payment-method
+
+kind: paymentMethod
+
+functions:
+  authorizeTransaction:
+    handler: dist/index.AuthorizeTransactionHandler
+  captureTransaction:
+    handler: dist/index.CaptureTransactionHandler
+  refundTransaction:
+    handler: dist/index.RefundTransactionHandler
+  voidTransaction:
+    handler: dist/index.VoidTransactionHandler
