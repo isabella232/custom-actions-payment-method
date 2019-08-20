@@ -1,43 +1,14 @@
 import { VoidTransactionHandler } from "./VoidTransaction";
-import {
-  BraintreeTransaction,
-  BraintreeTransactionType,
-  BraintreeTransactionStatus
-} from "braintree-types";
+import { BraintreeTransactionStatus } from "braintree-types";
+import { transactionFactory } from "../test/factories/transactionFactory";
 
 describe("VoidTransaction", () => {
-  let voidableTransaction: BraintreeTransaction;
-
-  beforeEach(() => {
-    voidableTransaction = {
-      id: "txn-id",
-      amount: "115.06",
-      billing: {
-        countryCodeAlpha2: "US",
-        firstName: "Kyle",
-        lastName: "DeTella",
-        locality: "Chicago",
-        postalCode: "60654",
-        region: "IL",
-        streetAddress: "222 W Merchandise Mart Pl"
-      },
-      customer: {
-        email: "user@testing.com",
-        phone: "+13122231234",
-        firstName: "User",
-        lastName: "Someone"
-      },
-      currencyIsoCode: "USD",
-      taxAmount: "0",
-      type: BraintreeTransactionType.SALE,
-      status: BraintreeTransactionStatus.AUTHORIZED,
-      paymentMethodFields: [{ name: "Foo", value: "Bar", displayValue: "B**" }]
-    };
-  });
-
   describe("success", () => {
     test("transitions from AUTHORIZED to VOIDED", async () => {
-      expect(await VoidTransactionHandler(voidableTransaction))
+      const authorizedTransaction = transactionFactory({
+        status: BraintreeTransactionStatus.AUTHORIZED
+      });
+      expect(await VoidTransactionHandler(authorizedTransaction))
         .toMatchInlineSnapshot(`
         Object {
           "transactionStatusEvent": Object {
@@ -49,10 +20,9 @@ describe("VoidTransaction", () => {
     });
 
     test("transitions from SUBMITTED_FOR_SETTLEMENT to VOIDED", async () => {
-      const submittedForSettlementTransaction = {
-        ...voidableTransaction,
+      const submittedForSettlementTransaction = transactionFactory({
         status: BraintreeTransactionStatus.SUBMITTED_FOR_SETTLEMENT
-      };
+      });
 
       expect(await VoidTransactionHandler(submittedForSettlementTransaction))
         .toMatchInlineSnapshot(`
