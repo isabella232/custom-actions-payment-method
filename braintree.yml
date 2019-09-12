@@ -3,9 +3,12 @@ name: custom-actions-payment-method
 
 kind: paymentMethod
 
-environment:
-  # You can add any custom environment variables here
-  # PUBLIC_KEY: "key_1234"
+# Configure environment variables which will be provided at runtime
+# environment:
+#   sandbox:
+#     PUBLIC_KEY: "sandbox_key"
+#   production:
+#     PUBLIC_KEY: "prod_key"
 
 functions:
   authorizeTransaction:
