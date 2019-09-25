@@ -37,7 +37,7 @@ Custom Actions is a serverless platform that opens the Braintree ecosystem to yo
 > We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions easily
 
 ```sh
-nvm use && npm i
+nvm install && npm install
 ```
 
 ### Testing locally
