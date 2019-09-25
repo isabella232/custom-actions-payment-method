@@ -27,7 +27,7 @@ Custom Actions is a serverless platform that opens the Braintree ecosystem to yo
 ## Requirements
 
 - A [Braintree sandbox](https://www.braintreepayments.com/sandbox) account
-- Node.js [v10.15](https://nodejs.org/en/download/releases/)
+- Node.js [v10.16](https://nodejs.org/en/download/releases/)
 - Familiarity with [TypeScript](https://typescriptlang.org)/JavaScript
 
 ## Development
