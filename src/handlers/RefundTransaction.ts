@@ -1,11 +1,11 @@
 import {
-  BraintreeTransaction,
   BraintreeEventHandlerResponse,
-  BraintreeTransactionStatus
+  BraintreeTransactionStatus,
+  BraintreeRefund
 } from "braintree-types";
 
 export const RefundTransactionHandler = async (
-  transaction: BraintreeTransaction
+  transaction: BraintreeRefund
 ): Promise<BraintreeEventHandlerResponse> => {
   // Call out to third-party here
 
