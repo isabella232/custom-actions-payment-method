@@ -12,7 +12,6 @@ export const CaptureTransactionHandler = async (
   return {
     transactionStatusEvent: {
       id: transaction.id,
-      settlementTimestamp: new Date(),
       status: BraintreeTransactionStatus.SUBMITTED_FOR_SETTLEMENT
     }
   };
